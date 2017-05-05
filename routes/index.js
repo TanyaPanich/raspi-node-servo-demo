@@ -9,12 +9,22 @@ router.post('/takephoto', function(req, res, next) {
   // Take the photo (move the servo)
   servo1.open()
   .then(function(){
-    // servo1.setDegree(100); // 0 - 180
+    var servoPos = 0;
+    servo1.setDegree(servoPos); // Reset position to start
+
+    // 0 - 180
+    var myInterval = setInterval(function(){
+      if( servoPos < 180 ) {
+        servo1.setDegree(servoPos);
+        servoPos++;
+      } else {
+        clearInterval(myInterval);
+      }
+    }, 100);
+
   })
 
   res.json({success: true});  // return JSON indicating success = true
-
-
 });
 
 /* GET home page. */
