@@ -18,16 +18,17 @@ router.post('/takephoto', function(req, res, next) {
         servoPos++;
       } else {
         clearInterval(interval1);
-      }
-    }, 100);
 
-    // 180 - 0
-    var interval2 = setInterval(function(){
-      if( servoPos >= 0 ) {
-        servo1.setDegree(servoPos);
-        servoPos-=5;
-      } else {
-        clearInterval(interval2);
+        // 180 - 0
+        var interval2 = setInterval(function(){
+          if( servoPos > 0 ) {
+            servo1.setDegree(servoPos);
+            servoPos--;
+          } else {
+            clearInterval(interval2);
+          }
+        }, 25);
+
       }
     }, 100);
 
