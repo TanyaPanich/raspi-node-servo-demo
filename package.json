@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sudo ./bin/pi-blaster/pi-blaster -D && node ./bin/www"
+    "start": "sudo ./bin/pi-blaster/pi-blaster -D & node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
