@@ -10,7 +10,7 @@ router.post('/takephoto', function(req, res, next) {
   servo1.open()
   .then(function(){
     var servoPos = 0;
-    servo1.setDegree(servoPos); // Reset position to start
+    servo1.setDegree(servoPos);
 
     // 0 - 180
     var myInterval = setInterval(function(){
@@ -22,6 +22,10 @@ router.post('/takephoto', function(req, res, next) {
       }
     }, 100);
 
+    return
+  })
+  .catch(function(err){
+    console.log(err);
   })
 
   res.json({success: true});  // return JSON indicating success = true
