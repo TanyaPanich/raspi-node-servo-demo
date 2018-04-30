@@ -10,15 +10,24 @@ router.post('/takephoto', function(req, res, next) {
   servo1.open()
   .then(function(){
     var servoPos = 0;
-    servo1.setDegree(servoPos);
 
     // 0 - 180
-    var myInterval = setInterval(function(){
+    var interval1 = setInterval(function(){
       if( servoPos < 180 ) {
         servo1.setDegree(servoPos);
         servoPos++;
       } else {
-        clearInterval(myInterval);
+        clearInterval(interval1);
+      }
+    }, 100);
+
+    // 180 - 0
+    var interval2 = setInterval(function(){
+      if( servoPos >= 0 ) {
+        servo1.setDegree(servoPos);
+        servoPos-=5;
+      } else {
+        clearInterval(interval2);
       }
     }, 100);
 
